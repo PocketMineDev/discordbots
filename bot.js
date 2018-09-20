@@ -13,6 +13,7 @@ client.on('ready', function() {
 });
  
       client.on('ready', () => {
+              client.user.setActivity("1play | .Sytraaa", {type: 'LISTENING'});
      
       });
 /*
@@ -201,9 +202,48 @@ function isYoutube(str) {
   if (message.content === `${prefix}`) {
     const embed = new Discord.RichEmbed()
      .setColor("RANDOM")
-.setFooter('Thank You For use this bot !! .')
+.setFooter('For additional help, contact.<@337457211875917834>')
       message.channel.send({embed});
      }
     });
  
+client.on('message', message => {
+var prefix = "$vipsss";
+ 
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == '395462979115679755' ) return;
+ 
+if (message.content.startsWith(prefix + 'setplay')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+} else
+ 
+if (message.content.startsWith(prefix + 'setstream')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/sytra_ayman");
+    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+} else
+ 
+if (message.content.startsWith(prefix + 'setwatch')) {
+client.user.setActivity(argresult, {type:'WATCHING'});
+    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
+} else 
+if (message.content.startsWith(prefix + 'setlist')) {
+client.user.setActivity(argresult, {type:'LISTENING'});
+    message.channel.sendMessage(`**:white_check_mark:  : ${argresult}**`)
+} else 
+
+if (message.content.startsWith(prefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+  return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+} else
+
+if (message.content.startsWith(prefix + 'setavt')) {
+  client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+}
+});
+
  client.login(process.env.BOT_TOKEN);
